@@ -5,10 +5,7 @@ def makeResponse(data=None, error=None, code=200, cache_hit=False):
     """
     Shapes the response
     """
-    if error is not None:
-        responseBody = {"success": False, "error": error, "data": None}
-    else:
-        responseBody = {"success": True, "error": None, "data": data}
+    responseBody = {"success": error is None, "error": error, "data": data}
 
     if "minify" in request.values:
         response = Response(dumps(responseBody, ensure_ascii=False, separators=(",", ":")))
