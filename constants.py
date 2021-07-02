@@ -17,11 +17,9 @@ def makeResponse(data=None, error=None, code=200, cache_hit=False):
     
     response.headers["Server"] = "Anise"
     response.headers["Content-Type"] = "application/json"
-    """
     if cache_hit:
         response.headers["X-ANISE-CACHE"] = "HIT"
     else:
         response.headers["X-ANISE-CACHE"] = "MISS"
-    """
     response.status_code = int(code)
     return response
